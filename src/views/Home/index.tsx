@@ -1,11 +1,14 @@
 import React from 'react';
+import * as S from './styles';
 import { View, Text } from 'react-native';
+import Header from '../../components/Header';
 
 const Home = () => {
     return (
-        <View>
+        <S.Container>
+            <Header />
             <Text>Home</Text>
-        </View>
+        </S.Container>
     )
 }
 
