@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const api = axios.create({
-  baseURL: 'https://gist.githubusercontent.com/MaxsonCoelho/fa08376fd6fb226f2edebc63b2a817c5/raw/dffc7dd92b09a113ac486e04971874f4a7c8ce56',
+  baseURL: 'https://gist.githubusercontent.com/MaxsonCoelho/fa08376fd6fb226f2edebc63b2a817c5/raw/3683604d29093b65ecaa4c33f792285a5df95a2a',
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json'
