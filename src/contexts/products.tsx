@@ -46,7 +46,10 @@ export default function ProductProvider({ children }: ProductsProvider){
         setListProductsCart(item => item.filter(
             prod => prod.idProduct !== idProduct
         ))
+        
     } 
+
+
 
 
     useEffect(() => {
@@ -59,7 +62,7 @@ export default function ProductProvider({ children }: ProductsProvider){
     }, [])
 
     return (
-        <ProductContext.Provider value={{ listProducts, loading, addProduct, listProductsCart, setListProductsCart, backButton, setBackButton,
+        <ProductContext.Provider value={{ listProducts, setListProducts, loading, addProduct, listProductsCart, setListProductsCart, backButton, setBackButton,
             removeProduct }}>
             {children}
         </ProductContext.Provider>

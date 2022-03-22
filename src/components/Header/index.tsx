@@ -8,7 +8,7 @@ import { ProductContext } from '../../contexts/products';
 
 const Header = () => {
     const navigation = useNavigation();
-    const { backButton, setBackButton } = useContext(ProductContext);
+    const { backButton, setBackButton, listProductsCart } = useContext(ProductContext);
 
     const carNavigation = () => {
         navigation.navigate('Cart');
@@ -30,7 +30,7 @@ const Header = () => {
             }
             <TouchableOpacity onPress={carNavigation} style={{ padding: 10, position: 'absolute', right: 10 }}>
                 <S.Circle>
-                    <S.Number>2</S.Number>
+                    <S.Number>{listProductsCart.length}</S.Number>
                 </S.Circle>
                 <Icon name="shoppingcart" color="#000" size={40} />
             </TouchableOpacity>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import * as S from './styles';
 import { FlatList, View } from 'react-native';
 import Header from '../../components/Header';
