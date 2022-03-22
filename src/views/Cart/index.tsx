@@ -7,7 +7,12 @@ import { ProductContext } from '../../contexts/products';
 
 
 const Cart = () => {
-    const { setBackButton, listProductsCart } = useContext(ProductContext);
+    const { setBackButton, listProductsCart, removeProduct } = useContext(ProductContext);
+
+    const executeRemove = (idProduct: string) => {
+        console.log(idProduct)
+        removeProduct(idProduct);
+    }
 
     useEffect(()=> {
         setBackButton(true);
@@ -26,7 +31,7 @@ const Cart = () => {
                             <Image source={{uri: item.imageURL}} style={{width: 60, height: 60, margin: 10, borderRadius: 5}} />
                             <Text style={{fontSize: 25, fontWeight: 'bold', color:'#000'}}>{item.name}</Text>
                         </View>
-                        <TouchableOpacity style={{justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#c00404', 
+                        <TouchableOpacity onPress={() => executeRemove(item.idProduct)} style={{justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: '#c00404', 
                         borderRadius: 25, marginLeft: 10}}>
                             <Icon name="close" color="#000" size={30} />
                         </TouchableOpacity>

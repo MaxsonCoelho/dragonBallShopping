@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import * as S from "./styles";
 import { TouchableOpacity, View } from 'react-native';
 import { ProductContext } from '../../contexts/products';
@@ -16,11 +16,19 @@ interface Product {
 
 const Product = ({ product }: ProductList) => {
 
-    const { addProduct } = useContext(ProductContext);
+    const { addProduct, removeProduct } = useContext(ProductContext);
+    const [activeProduct, setActiveProduct] = useState<Boolean>(true);
 
     const execAddProduc = (product: string) => {
-        addProduct(product);
-        
+        if(activeProduct == true){
+            addProduct(product);
+            setActiveProduct(false);
+            return
+        }else {
+            setActiveProduct(true);
+            removeProduct(product.idProduct);
+            return
+        }
     }
 
     return (
@@ -33,9 +41,19 @@ const Product = ({ product }: ProductList) => {
                 <S.NamePerson>{product.name}</S.NamePerson>
                 <S.PricePerson>  R$:{product.price}</S.PricePerson>
             </View>
-            <TouchableOpacity onPress={() => execAddProduc(product)} style={{backgroundColor:'#00FF00', width:140, alignItems:'center', justifyContent: 'center', height: 30, borderRadius: 5}}>
-                <S.Add>Add</S.Add>
-            </TouchableOpacity>
+            
+                {activeProduct ? 
+                    <TouchableOpacity onPress={() => execAddProduc(product)} style={{backgroundColor:'#00FF00', width:140, alignItems:'center', 
+                    justifyContent: 'center', height: 30, borderRadius: 5}}>
+                        <S.Add>Adicionar</S.Add>  
+                    </TouchableOpacity>
+                :
+                    <TouchableOpacity onPress={() => execAddProduc(product)} style={{backgroundColor:'#97030bf0', width:140, alignItems:'center', 
+                    justifyContent: 'center', height: 30, borderRadius: 5}}>
+                        <S.Add>Remover</S.Add>  
+                    </TouchableOpacity>
+                }
+            
         </S.Container>
     )
 }
