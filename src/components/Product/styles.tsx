@@ -2,7 +2,33 @@ import styled from 'styled-components/native';
 
 
 export const Container = styled.View`
-flex: 1;
+width: 110px;
+margin-top: 20px ;
+margin-bottom: 40px ;
 `
 
+export const NamePerson = styled.Text`
+color: #fff ;
+font-weight: bold ;
+font-size: 15 ;
+`
+
+export const PricePerson = styled.Text`
+color: #fff ;
+font-weight: bold ;
+font-size: 15 ;
+`
+
+export const Add = styled.Text`
+color: #fff ;
+font-weight: bold ;
+font-size: 17 ;
+`
+
+export const ImagePerson = styled.Image`
+width: 120px ;
+height: 130px ;
+border-radius: 5px ;
+
+`
 

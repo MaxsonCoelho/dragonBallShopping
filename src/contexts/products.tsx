@@ -6,6 +6,7 @@ interface ProductsProvider {
     children: ReactNode;
 }
 
+
 export const ProductContext = createContext({});
 
 
@@ -13,6 +14,11 @@ export default function ProductProvider({ children }: ProductsProvider){
 
     const [productList, setProductList] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const addProduct = (id: string) => {
+        console.log(id);
+    }   
+
 
     useEffect(() => {
         api.get('/brinquedos.json.js')
@@ -23,9 +29,8 @@ export default function ProductProvider({ children }: ProductsProvider){
         })
     }, [])
 
-
     return (
-        <ProductContext.Provider value={{ productList, loading }}>
+        <ProductContext.Provider value={{ productList, loading, addProduct }}>
             {children}
         </ProductContext.Provider>
     );
