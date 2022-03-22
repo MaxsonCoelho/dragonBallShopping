@@ -20,6 +20,7 @@ const Product = ({ product }: ProductList) => {
 
     const execAddProduc = (product: string) => {
         addProduct(product);
+        
     }
 
     return (

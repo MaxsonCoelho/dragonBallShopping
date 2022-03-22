@@ -6,17 +6,35 @@ interface ProductsProvider {
     children: ReactNode;
 }
 
+interface Product {
+    name: string;
+    price: string;
+    imageURL: string;
+    idProduct: string;
+}
+
 
 export const ProductContext = createContext({});
 
 
 export default function ProductProvider({ children }: ProductsProvider){
 
-    const [productList, setProductList] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [listProducts, setListProducts] = useState<String[]>([]);
+    const [listProductsCart, setListProductsCart] = useState<String[]>([]);
+    const [backButton, setBackButton] = useState(false);
+    const [loading, setLoading] = useState<Boolean>(true);
 
-    const addProduct = (id: string) => {
-        console.log(id);
+    const addProduct = (product: Product) => {
+
+        const newProduct: any = {
+            idProduct: product.idProduct,
+            name: product.name,
+            price: product.price,
+            imageURL: product.imageURL,
+            done: true,
+          }
+        
+        setListProductsCart(item => [...item, newProduct]);
     }   
 
 
@@ -25,12 +43,12 @@ export default function ProductProvider({ children }: ProductsProvider){
         
         .then(response => {
             const array = response.data
-            setProductList(array.items);
+            setListProducts(array.items);
         })
     }, [])
 
     return (
-        <ProductContext.Provider value={{ productList, loading, addProduct }}>
+        <ProductContext.Provider value={{ listProducts, loading, addProduct, listProductsCart, setListProductsCart, backButton, setBackButton }}>
             {children}
         </ProductContext.Provider>
     );
