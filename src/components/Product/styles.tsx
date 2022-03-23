@@ -32,3 +32,19 @@ border-radius: 5px ;
 
 `
 
+export const ImagePersonModal = styled.Image`
+width: 200px ;
+height: 200px ;
+border-radius: 5px ;
+
+`
+
+export const ContainerModal = styled.View`
+width: 100% ;
+height: 100% ;
+background-color: rgba(0,0,0, 0.5) ;
+align-items: center ;
+justify-content: center ;
+border-radius: 5px ;
+
+`

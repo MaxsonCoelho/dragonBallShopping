@@ -10,13 +10,11 @@ const Cart = () => {
     const { setBackButton, listProductsCart, removeProduct } = useContext(ProductContext);
 
     const executeRemove = (idProduct: string) => {
-        console.log(idProduct)
         removeProduct(idProduct);
     }
 
     useEffect(()=> {
         setBackButton(true);
-        console.log(listProductsCart)
     }, [])
 
     return (
