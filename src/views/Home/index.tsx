@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import * as S from './styles';
 import { FlatList, View } from 'react-native';
 import Header from '../../components/Header';
@@ -8,7 +8,7 @@ import Product from '../../components/Product';
 
 const Home = () => {
 
-    const { productList } = useContext(ProductContext);
+    const { listProducts } = useContext(ProductContext);
 
 
     return (
@@ -19,7 +19,7 @@ const Home = () => {
                     horizontal={false}
                     numColumns={2}
                     showsVerticalScrollIndicator={false}
-                    data={productList}
+                    data={listProducts}
                     renderItem={item => (
                         <Product product={item.item} />
                     )}
