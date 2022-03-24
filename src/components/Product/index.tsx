@@ -19,9 +19,9 @@ const Product = ({ product }: ProductList) => {
 
     const { addProduct, removeProduct } = useContext(ProductContext);
     const [activeProduct, setActiveProduct] = useState<Boolean>(true);
-    const [modalVisible, setModalVisible] = useState<Boolean>(false);
+    const [modalVisible, setModalVisible] = useState<any>(false);
 
-    const execAddProduc = (product: string) => {
+    const execAddProduc = (product: Product) => {
         if(activeProduct == true){
             addProduct(product);
             setActiveProduct(false);
@@ -59,7 +59,7 @@ const Product = ({ product }: ProductList) => {
                 <S.NamePerson>{product.name}</S.NamePerson>
                 <S.PricePerson>  R$:{product.price}</S.PricePerson>
             </View>
-                <TouchableOpacity onPress={() => execAddProduc(product)} style={{backgroundColor:activeProduct || product.done == true ? '#00FF00' : '#FF4000', width:140, alignItems:'center', 
+                <TouchableOpacity onPress={() => execAddProduc(product)} style={{backgroundColor:activeProduct ? '#00FF00' : '#FF4000', width:140, alignItems:'center', 
                 justifyContent: 'center', height: 30, borderRadius: 5}}>
                     <S.Add>{activeProduct ? 'Adicionar' : 'Remover' }</S.Add>
                 </TouchableOpacity>

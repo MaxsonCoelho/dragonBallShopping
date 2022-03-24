@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React, { Context, useContext, useEffect } from 'react';
 import * as S from './styles';
-import { FlatList, View } from 'react-native';
+import { View } from 'react-native';
 import Header from '../../components/Header';
 import { ProductContext } from '../../contexts/products';
 import Product from '../../components/Product';
@@ -9,7 +9,6 @@ import Product from '../../components/Product';
 const Home = () => {
 
     const { listProducts } = useContext(ProductContext);
-
 
     return (
         <S.Container>
@@ -23,7 +22,7 @@ const Home = () => {
                     renderItem={item => (
                         <Product product={item.item} />
                     )}
-                    keyExtractor={item => String(item.idProduct)}
+                    keyExtractor={(item: any) => item.idProduct}
                 />
             </View>
         </S.Container>

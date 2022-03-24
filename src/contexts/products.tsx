@@ -14,14 +14,26 @@ interface Product {
     idProduct: string;
 }
 
+interface ContextData {
+    listProductsCart: String[];
+    listProducts: String[];
+    setListProducts: any;
+    loading: Boolean;
+    addProduct: any;
+    setListProductsCart: any;
+    backButton: Boolean;
+    setBackButton: any;
+    removeProduct: any;
+}
 
-export const ProductContext = createContext({});
+
+export const ProductContext = createContext({} as ContextData);
 
 
 export default function ProductProvider({ children }: ProductsProvider){
 
     const [listProducts, setListProducts] = useState<String[]>([]);
-    const [listProductsCart, setListProductsCart] = useState<String[]>([]);
+    const [listProductsCart, setListProductsCart] = useState<any[]>([]);
     const [backButton, setBackButton] = useState<Boolean>(false);
     const [loading, setLoading] = useState<Boolean>(true);
 
@@ -38,18 +50,11 @@ export default function ProductProvider({ children }: ProductsProvider){
         setListProductsCart(item => [...item, newProductCart]);
     }   
 
-    const removeProduct = (idProduct: Product, setActiveProduct) => {
+    const removeProduct = (idProduct: Product) => {
         setListProductsCart(item => item.filter(
             prod => prod.idProduct !== idProduct
         ))
-        var setProduct = listProducts.find(item => item.idProduct == idProduct);
-        setProduct.done = false;
-        console.log(setProduct)
-
     } 
-
-
-
 
     useEffect(() => {
         api.get('/brinquedos.json.js')
