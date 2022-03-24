@@ -5,6 +5,9 @@ import Header from '../../components/Header';
 import Icon from 'react-native-vector-icons/AntDesign'; 
 import { ProductContext } from '../../contexts/products';
 
+interface Products {
+    item: any;
+}
 
 const Cart = () => {
     const { setBackButton, listProductsCart, removeProduct } = useContext(ProductContext);
@@ -22,7 +25,7 @@ const Cart = () => {
             <Header />
             <FlatList
                 data={listProductsCart}
-                renderItem={({item}) => (
+                renderItem={({item}: Products) => (
                     <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
                         <View style={{width: '70%', height: 80, backgroundColor:'#ccc', flexDirection: 'row', alignItems: 'center', 
                         borderRadius: 5, marginVertical: 10}} >
@@ -35,7 +38,7 @@ const Cart = () => {
                         </TouchableOpacity>
                     </View>
                 )}
-                keyExtractor={item => item.idProduct}
+                keyExtractor={(item: any)=> item.idProduct}
             />
         </S.Container>
     )
